@@ -2,6 +2,7 @@ package com.projexino.softwareprojectmanagement.components
 
 import android.app.Activity
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -37,6 +38,7 @@ fun DropdownMenu(
         onDismissRequest = {
             onDismiss.invoke()
         },
+        modifier = Modifier.background(Color(0xFFF1F1F1))
     ) {
         options.forEach { option ->
             DropdownMenuItem(onClick = {

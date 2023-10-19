@@ -1,6 +1,7 @@
 package com.projexino.softwareprojectmanagement.components
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
@@ -33,11 +34,12 @@ fun Dropdown(
 ) {
     Card(
         elevation = 0.dp,
-        border = BorderStroke(
-            1.dp, Color(("#9f9f9f").toColorInt())
-        ),
+//        border = BorderStroke(
+//            1.dp, Color(("#9f9f9f").toColorInt())
+//        ),
         modifier = Modifier
             .fillMaxWidth()
+            .background(Color(0xFFF1F1F1))
             .heightIn(min = 55.dp)
             .clickable {
                 onDropdownMenuChange.invoke()

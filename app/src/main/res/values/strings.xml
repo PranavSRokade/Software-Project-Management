@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Software Project Management</string>
+    <string name="title_activity_add_project">AddProject</string>
 </resources>

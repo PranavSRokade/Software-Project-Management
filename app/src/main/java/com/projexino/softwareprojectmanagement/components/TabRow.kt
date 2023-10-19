@@ -3,8 +3,10 @@ package com.projexino.softwareprojectmanagement.components
 import androidx.compose.animation.Animatable
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ScrollableTabRow
+import androidx.compose.material.Surface
 import androidx.compose.material.Tab
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -15,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -55,23 +58,25 @@ fun TabRow(pagerState: PagerState, tabItems: List<String>) {
                     ) else Color.White
                 )
             }
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 3.dp, vertical = 7.dp)
+            ) {
                 Tab(
                     text = {
                         Text(
                             title,
 //                                        style = if (pagerState.currentPage == index) MaterialTheme.typography.button else MaterialTheme.typography.h5,
                             fontWeight = if (pagerState.currentPage == index) FontWeight.Bold else FontWeight.Normal,
-                            fontSize = 16.sp,
-                            color = if (pagerState.currentPage == index) Color(("#21486C").toColorInt()) else Color(
-                                ("#001B33").toColorInt()
-                            ),
-                            textAlign = TextAlign.Start
+                            fontSize = 26.sp,
+                            color = if (pagerState.currentPage == index) Color.Black else Color.DarkGray,
+                            textAlign = TextAlign.Start,
+                            style = com.projexino.softwareprojectmanagement.ui.theme.Typography.body2,
                         )
                     },
                     selected = pagerState.currentPage == index,
-                    modifier = Modifier
-                        .padding(horizontal = 3.dp),
+                    modifier = Modifier,
                     onClick = {
                         coroutineScope.launch {
                             pagerState.scrollToPage(
@@ -79,14 +84,20 @@ fun TabRow(pagerState: PagerState, tabItems: List<String>) {
                             )
                         }
                     })
-                if (pagerState.currentPage == index) {
-                    Box(
-                        Modifier
-                            .size(5.dp)
-                            .clip(RoundedCornerShape(8.dp))
-                            .background(Color("#21486C".toColorInt()))
-                    )
-                }
+
+                Text(
+                    "6",
+                    modifier = Modifier
+                        .width(22.dp)
+//                        .height(20.dp)
+                        .offset(y = (-4).dp)
+                        .align(Alignment.TopEnd)
+                        .clip(CircleShape)
+                        .background(
+                            color = if (pagerState.currentPage == index) Color("#3274f4".toColorInt()) else Color.LightGray
+                        ),
+                    textAlign = TextAlign.Center
+                )
             }
         }
     }
